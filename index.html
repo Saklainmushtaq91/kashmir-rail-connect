@@ -3,103 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#086b52">
 <title>Kashmir Rail Connect</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f7f5;color:#172b24}
-header{background:#086b52;color:white;padding:25px 18px;border-radius:0 0 24px 24px}
-header h1{margin:0;font-size:28px}
-header p{margin:8px 0 0;color:#d9f3e8}
-main{max-width:750px;margin:20px auto;padding:0 14px}
-.card{background:white;padding:18px;border-radius:16px;margin-bottom:16px;box-shadow:0 3px 15px #00000009}
-h2{margin-top:0;font-size:20px}
-label{display:block;font-weight:bold;font-size:13px;margin:12px 0 6px}
-select,input{width:100%;padding:13px;border:1px solid #ccd9d2;border-radius:10px;font-size:16px;background:white}
-button{width:100%;padding:14px;border:0;border-radius:10px;background:#086b52;color:white;font-size:16px;font-weight:bold;margin-top:15px}
-.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.links a{background:#e7f5ed;padding:15px 8px;border-radius:10px;text-decoration:none;color:#075640;text-align:center;font-weight:bold}
-.note{font-size:13px;color:#765000;background:#fff5df;padding:12px;border-radius:10px;line-height:1.5}
-footer{text-align:center;color:#66766f;font-size:12px;padding:20px}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f1f8f3;
+  color:#183b2a;
+}
+header{
+  background:#087b45;
+  color:white;
+  text-align:center;
+  padding:25px 12px;
+}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.container{max-width:900px;margin:auto;padding:15px}
+.box{
+  background:white;
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:0 3px 12px #0000000d;
+}
+h2{font-size:21px;margin-top:0;color:#087b45}
+label{display:block;margin:12px 0 6px;font-weight:bold}
+select,input,button{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #cbd8ce;
+  font-size:16px;
+}
+button{
+  background:#087b45;
+  color:white;
+  border:none;
+  margin-top:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.services{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.service{
+  display:block;
+  background:#e6f5eb;
+  color:#075b35;
+  padding:18px 8px;
+  text-align:center;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:bold;
+  border:1px solid #cce8d5;
+}
+.service span{display:block;font-size:28px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 7px;border:1px solid #dce7df;text-align:left}
+th{background:#087b45;color:white}
+.table-wrap{overflow-x:auto}
+.notice{
+  background:#fff4d8;
+  color:#694b00;
+  padding:12px;
+  border-radius:8px;
+  font-size:14px;
+  line-height:1.5;
+}
+.small{font-size:13px;color:#5c6d62;line-height:1.5}
+footer{
+  background:#075b35;color:white;text-align:center;
+  padding:18px;font-size:13px;margin-top:20px
+}
+@media(max-width:450px){
+  header h1{font-size:23px}
+  .services{grid-template-columns:repeat(2,1fr)}
+  table{font-size:12px}
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>🚆 Kashmir Rail Connect</h1>
-<p>Your Journey, Connected.</p>
-<p>Kashmir Valley Railway Information</p>
+  <h1>🚆 Kashmir Rail Connect</h1>
+  <p>Kashmir Valley Train Information Portal</p>
+  <p>Timetable • Train Status • Passenger Services</p>
 </header>
-<main>
-<section class="card">
-<h2>🔎 Find Your Train</h2>
-<label for="from">From Station</label>
-<select id="from">
-<option value="">Select departure station</option>
-<option>Baramulla</option>
-<option>Sopore</option>
-<option>Hamalwari</option>
-<option>Pattan</option>
-<option>Mazhom</option>
-<option>Budgam</option>
-<option>Srinagar</option>
-<option>Pampore</option>
-<option>Kakapora</option>
-<option>Awantipora</option>
-<option>Panzgam</option>
-<option>Bijbehara</option>
-<option>Anantnag</option>
-<option>Qazigund</option>
-<option>Banihal</option>
-</select>
-<label for="to">To Station</label>
-<select id="to">
-<option value="">Select destination station</option>
-<option>Baramulla</option>
-<option>Sopore</option>
-<option>Hamalwari</option>
-<option>Pattan</option>
-<option>Mazhom</option>
-<option>Budgam</option>
-<option>Srinagar</option>
-<option>Pampore</option>
-<option>Kakapora</option>
-<option>Awantipora</option>
-<option>Panzgam</option>
-<option>Bijbehara</option>
-<option>Anantnag</option>
-<option>Qazigund</option>
-<option>Banihal</option>
-</select>
-<button onclick="findTrain()">Search Trains</button>
-<div id="result"></div>
-</section>
 
-<section class="card">
-<h2>🚉 Railway Services</h2>
-<div class="links">
-<a href="https://www.indianrail.gov.in/" target="_blank">Train Information</a>
-<a href="https://enquiry.indianrail.gov.in/" target="_blank">Rail Enquiry</a>
-<a href="https://www.irctc.co.in/" target="_blank">Book Tickets</a>
-<a href="https://www.google.com/maps/search/railway+stations+in+Kashmir/" target="_blank">Find Stations</a>
+<div class="container">
+
+<div class="box">
+  <h2>🔎 Search Train Timetable</h2>
+
+  <label for="from">From Station</label>
+  <select id="from">
+    <option value="">Select Starting Station</option>
+  </select>
+
+  <label for="to">To Station</label>
+  <select id="to">
+    <option value="">Select Destination Station</option>
+  </select>
+
+  <button onclick="searchTrains()">Search Trains</button>
+  <div id="searchResult" style="margin-top:15px"></div>
 </div>
-</section>
 
-<section class="card">
-<h2>📍 Kashmir Railway</h2>
-<p>Search for railway stations across the Kashmir Valley, from Baramulla towards Banihal.</p>
-<p class="note"><b>Important:</b> This is the first version of the website. Live train location, delays and verified train timings are not connected yet. Check official railway information before travelling.</p>
-</section>
-</main>
-<footer>Kashmir Rail Connect © 2026<br>Independent railway information website</footer>
+<div class="box">
+  <h2>🚄 Jammu – Srinagar Vande Bharat</h2>
+  <div class="notice">
+    These are published timetable times. Train operation and timings may change.
+    Confirm your journey with official railway enquiry before travelling.
+  </div>
+  <br>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Train No.</th>
+        <th>Route</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Runs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>26401</td>
+        <td>Jammu Tawi → Srinagar</td>
+        <td>06:20</td>
+        <td>11:10</td>
+        <td>Except Tuesday</td>
+      </tr>
+      <tr>
+        <td>26402</td>
+        <td>Srinagar → Jammu Tawi</td>
+        <td>14:00</td>
+        <td>18:50</td>
+        <td>Except Tuesday</td>
+      </tr>
+      <tr>
+        <td>26403</td>
+        <td>Jammu Tawi → Srinagar</td>
+        <td>13:20</td>
+        <td>18:00</td>
+        <td>Except Wednesday</td>
+      </tr>
+      <tr>
+        <td>26404</td>
+        <td>Srinagar → Jammu Tawi</td>
+        <td>08:00</td>
+        <td>12:40</td>
+        <td>Except Wednesday</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">
+    Main stops include Banihal and Katra. These trains do not stop at every
+    Kashmir Valley station.
+  </p>
+</div>
+
+<div class="box">
+  <h2>📍 Kashmir Valley Stations</h2>
+  <p class="small">
+    Baramulla • Sopore • Hamre • Pattan • Mazhom • Srinagar • Budgam •
+    Pampore • Kakapora • Awantipora • Panzgam • Bijbehara • Anantnag •
+    Qazigund • Banihal
+  </p>
+  <div class="notice">
+    Complete local-train arrival and departure times have not been added yet.
+    The search will not invent times for local trains.
+  </div>
+</div>
+
+<div class="box">
+  <h2>🛠️ Passenger Services</h2>
+  <div class="services">
+    <a class="service" href="https://enquiry.indianrail.gov.in/ntes/">
+      <span>🚆</span>Train Status
+    </a>
+
+    <a class="service" href="https://www.irctc.co.in/">
+      <span>💳</span>Train Fare / Booking
+    </a>
+
+    <a class="service" href="https://indianrailways.gov.in/">
+      <span>📢</span>Notice Board
+    </a>
+
+    <a class="service" href="https://www.google.com/maps">
+      <span>🚕</span>Cab Booking
+    </a>
+
+    <a class="service" href="https://indianrailways.gov.in/">
+      <span>👮</span>Railway Police
+    </a>
+  </div>
+  <p class="small">
+    Note: Cab Booking and Railway Police buttons are temporary links.
+    Replace them with the correct local service links when available.
+  </p>
+</div>
+
+<div class="box">
+  <h2>🔗 Official Railway Links</h2>
+  <p><a href="https://www.indianrail.gov.in/enquiry/SCHEDULE/TrainSchedule.jsp">
+    Indian Railways Train Schedule
+  </a></p>
+  <p><a href="https://enquiry.indianrail.gov.in/ntes/">
+    National Train Enquiry System (NTES)
+  </a></p>
+  <p><a href="https://www.irctc.co.in/">
+    IRCTC Ticket Booking
+  </a></p>
+</div>
+
+</div>
+
+<footer>
+  Kashmir Rail Connect<br>
+  Passenger Information Portal<br>
+  Always verify train timings through official railway sources.
+</footer>
+
 <script>
-function findTrain(){
-const from=document.getElementById('from').value;
-const to=document.getElementById('to').value;
-const result=document.getElementById('result');
-if(!from||!to){result.innerHTML='<p>Please select both stations.</p>';return;}
-if(from===to){result.innerHTML='<p>Please select two different stations.</p>';return;}
-result.innerHTML='<p><b>'+from+' → '+to+'</b></p><p>Verified train timings are not connected yet. Please check the official railway enquiry service.</p><a href="https://enquiry.indianrail.gov.in/" target="_blank">Open Railway Enquiry</a>';
+const stations = [
+  "Baramulla",
+  "Sopore",
+  "Hamre",
+  "Pattan",
+  "Mazhom",
+  "Srinagar",
+  "Budgam",
+  "Pampore",
+  "Kakapora",
+  "Awantipora",
+  "Panzgam",
+  "Bijbehara",
+  "Anantnag",
+  "Qazigund",
+  "Banihal",
+  "Sangaldan",
+  "Reasi",
+  "Shri Mata Vaishno Devi Katra",
+  "Jammu Tawi"
+];
+
+const fromSelect = document.getElementById("from");
+const toSelect = document.getElementById("to");
+
+stations.forEach(station => {
+  fromSelect.add(new Option(station, station));
+  toSelect.add(new Option(station, station));
+});
+
+function searchTrains() {
+  const from = fromSelect.value;
+  const to = toSelect.value;
+  const result = document.getElementById("searchResult");
+
+  if (!from || !to) {
+    result.innerHTML = "<p>Please select both stations.</p>";
+    return;
+  }
+
+  if (from === to) {
+    result.innerHTML = "<p>Please select two different stations.</p>";
+    return;
+  }
+
+  const jammu = "Jammu Tawi";
+  const srinagar = "Srinagar";
+
+  if (from === jammu && to === srinagar) {
+    result.innerHTML =
+      "<h3>Jammu Tawi → Srinagar</h3>" +
+      "<p>Train 26401: Departure 06:20, Arrival 11:10 " +
+      "(except Tuesday).</p>" +
+      "<p>Train 26403: Departure 13:20, Arrival 18:00 " +
+      "(except Wednesday).</p>" +
+      "<p class='small'>Check official railway enquiry before travel.</p>";
+    return;
+  }
+
+  if (from === srinagar && to === jammu) {
+    result.innerHTML =
+      "<h3>Srinagar → Jammu Tawi</h3>" +
+      "<p>Train 26404: Departure 08:00, Arrival 12:40 " +
+      "(except Wednesday).</p>" +
+      "<p>Train 26402: Departure 14:00, Arrival 18:50 " +
+      "(except Tuesday).</p>" +
+      "<p class='small'>Check official railway enquiry before travel.</p>";
+    return;
+  }
+
+  result.innerHTML =
+    "<div class='notice'>Local train timings for " + from +
+    " → " + to + " have not yet been verified and added to this website. " +
+    "Please check the official NTES enquiry link below.</div>";
 }
 </script>
+
 </body>
 </html>
