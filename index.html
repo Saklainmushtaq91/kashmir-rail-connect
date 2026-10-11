@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#086b52">
+<title>Kashmir Rail Connect</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7f5;color:#172b24}
+header{background:#086b52;color:white;padding:25px 18px;border-radius:0 0 24px 24px}
+header h1{margin:0;font-size:28px}
+header p{margin:8px 0 0;color:#d9f3e8}
+main{max-width:750px;margin:20px auto;padding:0 14px}
+.card{background:white;padding:18px;border-radius:16px;margin-bottom:16px;box-shadow:0 3px 15px #00000009}
+h2{margin-top:0;font-size:20px}
+label{display:block;font-weight:bold;font-size:13px;margin:12px 0 6px}
+select,input{width:100%;padding:13px;border:1px solid #ccd9d2;border-radius:10px;font-size:16px;background:white}
+button{width:100%;padding:14px;border:0;border-radius:10px;background:#086b52;color:white;font-size:16px;font-weight:bold;margin-top:15px}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.links a{background:#e7f5ed;padding:15px 8px;border-radius:10px;text-decoration:none;color:#075640;text-align:center;font-weight:bold}
+.note{font-size:13px;color:#765000;background:#fff5df;padding:12px;border-radius:10px;line-height:1.5}
+footer{text-align:center;color:#66766f;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>🚆 Kashmir Rail Connect</h1>
+<p>Your Journey, Connected.</p>
+<p>Kashmir Valley Railway Information</p>
+</header>
+<main>
+<section class="card">
+<h2>🔎 Find Your Train</h2>
+<label for="from">From Station</label>
+<select id="from">
+<option value="">Select departure station</option>
+<option>Baramulla</option>
+<option>Sopore</option>
+<option>Hamalwari</option>
+<option>Pattan</option>
+<option>Mazhom</option>
+<option>Budgam</option>
+<option>Srinagar</option>
+<option>Pampore</option>
+<option>Kakapora</option>
+<option>Awantipora</option>
+<option>Panzgam</option>
+<option>Bijbehara</option>
+<option>Anantnag</option>
+<option>Qazigund</option>
+<option>Banihal</option>
+</select>
+<label for="to">To Station</label>
+<select id="to">
+<option value="">Select destination station</option>
+<option>Baramulla</option>
+<option>Sopore</option>
+<option>Hamalwari</option>
+<option>Pattan</option>
+<option>Mazhom</option>
+<option>Budgam</option>
+<option>Srinagar</option>
+<option>Pampore</option>
+<option>Kakapora</option>
+<option>Awantipora</option>
+<option>Panzgam</option>
+<option>Bijbehara</option>
+<option>Anantnag</option>
+<option>Qazigund</option>
+<option>Banihal</option>
+</select>
+<button onclick="findTrain()">Search Trains</button>
+<div id="result"></div>
+</section>
+
+<section class="card">
+<h2>🚉 Railway Services</h2>
+<div class="links">
+<a href="https://www.indianrail.gov.in/" target="_blank">Train Information</a>
+<a href="https://enquiry.indianrail.gov.in/" target="_blank">Rail Enquiry</a>
+<a href="https://www.irctc.co.in/" target="_blank">Book Tickets</a>
+<a href="https://www.google.com/maps/search/railway+stations+in+Kashmir/" target="_blank">Find Stations</a>
+</div>
+</section>
+
+<section class="card">
+<h2>📍 Kashmir Railway</h2>
+<p>Search for railway stations across the Kashmir Valley, from Baramulla towards Banihal.</p>
+<p class="note"><b>Important:</b> This is the first version of the website. Live train location, delays and verified train timings are not connected yet. Check official railway information before travelling.</p>
+</section>
+</main>
+<footer>Kashmir Rail Connect © 2026<br>Independent railway information website</footer>
+<script>
+function findTrain(){
+const from=document.getElementById('from').value;
+const to=document.getElementById('to').value;
+const result=document.getElementById('result');
+if(!from||!to){result.innerHTML='<p>Please select both stations.</p>';return;}
+if(from===to){result.innerHTML='<p>Please select two different stations.</p>';return;}
+result.innerHTML='<p><b>'+from+' → '+to+'</b></p><p>Verified train timings are not connected yet. Please check the official railway enquiry service.</p><a href="https://enquiry.indianrail.gov.in/" target="_blank">Open Railway Enquiry</a>';
+}
+</script>
+</body>
+</html>
